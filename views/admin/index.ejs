@@ -1,0 +1,37 @@
+<div class="container">
+    <h2>Sign In</h2>
+<% if (locals.loginStatus) { %>
+  <div id = "card-login"class="card <%= locals.loginStatus === 'success' ? 'card-success' : 'card-error' %>">
+    <p><%= locals.loginMessage %></p>
+  </div>
+<% } %>
+
+<form class="centered-form" action="/admin" method ="POST">
+    <label for="username"><b>Username</b></label>
+    <input type="text" placeholder="Enter Username" name="username">
+
+    <label for="password"><b>Password</b></label>
+    <input type="password" placeholder="Enter Password" name="password">
+
+    <input class="btn-cute" type="submit" value="Login">
+</form>
+</div>
+
+
+<div class="container">
+<h2>New User? Yay! Register</h2>
+<% if (locals.registerMessage) { %>
+  <div id = "card-register"class="card <%= locals.registerStatus === 'success' ? 'card-success' : 'card-error' %>">
+    <p><%= locals.registerMessage %></p>
+  </div>
+<% } %>
+<form class="centered-form" action="/register" method ="POST">
+    <label for="username"><b>Username</b></label>
+    <input type="text" placeholder="Enter Username" name="username">
+
+    <label for="password"><b>Password</b></label>
+    <input type="password" placeholder="Enter Password" name="password">
+
+    <input class="btn-cute" type="submit" value="Register">
+</form>
+</div>

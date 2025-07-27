@@ -1,0 +1,24 @@
+<a href="/dashboard">&larr; Back</a>
+<div class="container">
+<% if (locals.postStatus) { %>
+  <div id = "card-login"class="card <%= locals.postStatus === 'success' ? 'card-success' : 'card-error' %>">
+    <p><%= locals.postMessage %></p>
+  </div>
+  <% } %>
+<div class="admin-title">
+    <h2 class="author__heading">View / Edit Post</h2>
+
+    <form action="/delete-post/<%= data._id %>?_method=DELETE" method="POST">
+        <input class="btn-delete" type="submit" value="Delete">
+    </form>
+</div>
+
+<form action="/edit-post/<%= data._id %>?_method=PUT" class="centered-form" method="POST">
+    <label for="title"><b>Title</b></label>
+    <input name = "title" type="text"placeholder="Post Title" value="<%= data.title %>">
+
+    <label for="body"><b>Content</b></label>
+    <textarea name = "body" cols="50" rows="10"><%= data.body %></textarea>
+    <input type="submit" value="Update" class="btn-cute">
+</form>
+</div>

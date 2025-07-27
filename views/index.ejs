@@ -1,0 +1,30 @@
+<% if (locals.logoutMessage) { %>
+  <div class="card <%= locals.logoutStatus === 'success' ? 'card-success' : 'card-error' %>">
+    <%= locals.logoutMessage %>
+  </div>
+<% } %>
+
+<div class="author">
+  <h1 class="author__heading">Hi, I am Divya</h1>
+  <p class="author__body">Web developer and student.</p>
+</div>
+
+<img src="/img/my_melody_background.jpeg" alt="My Melody background" class="hero-image" loading="lazy" width="981" height="528">
+
+<section class="articles">
+  <h2 class="articles__heading">Latest Posts</h2>
+  <ul class="article-ul">
+    <% data.forEach(post => { %>
+      <li>
+        <a href="/post/<%= post._id %>">
+          <span class="article-title"><%= post.title %></span>
+          <span class="article-list__date"><%= post.createdAt.toDateString() %></span>
+        </a>
+      </li>
+    <% }) %>
+  </ul>
+  <% if (nextPage !== null) { %>
+    <a href="/?page=<%= nextPage %>" class="pagination">&lt; View Older Posts</a>
+
+  <% } %>
+</section>
